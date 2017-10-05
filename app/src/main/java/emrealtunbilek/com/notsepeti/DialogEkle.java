@@ -48,7 +48,7 @@ public class DialogEkle extends DialogFragment {
         mBtnEkle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 
