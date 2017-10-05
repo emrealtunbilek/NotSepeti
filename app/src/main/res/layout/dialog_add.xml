@@ -5,7 +5,7 @@
 
     <TextView
         android:id="@+id/tv_baslik"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bir Not Ekle"
         android:layout_marginTop="@dimen/baslik_vertical_margin"
@@ -14,8 +14,38 @@
         />
     <ImageButton
         android:id="@+id/btn_kapat"
-        android:layout_width="24dp"
-        android:layout_height="24dp" />
+        android:layout_width="18dp"
+        android:background="@null"
+        android:src="@drawable/ic_action_cancel"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/tv_baslik"
+        android:layout_alignBottom="@id/tv_baslik"
+        android:layout_height="18dp" />
+
+    <EditText
+        android:id="@+id/et_not"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tv_baslik"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:hint="Not Girin"
+        />
+
+    <DatePicker
+        android:id="@+id/dp_tarih"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_not"
+        android:layout_toStartOf="@+id/btn_kapat">
+    </DatePicker>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_not_ekle_dialog"
+        android:layout_below="@id/dp_tarih"
+        android:textAllCaps="false"
+        android:text="Not Ekle"
+        />
 
 
 </RelativeLayout>
