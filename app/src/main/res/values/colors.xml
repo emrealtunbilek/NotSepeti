@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="btn_kenar_rengi_mor">#B691FF</color>
     <color name="btn_notekle_pressed_fill_color">#05FFCA</color>
+    <color name="toolbar_renk">#0093aa</color>
 </resources>

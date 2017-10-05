@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="emrealtunbilek.com.notsepeti.ActivityMain">
 
+    <include layout="@layout/toolbar" android:id="@+id/toolbar"></include>
     <include layout="@layout/bos_liste"></include>
 
 </RelativeLayout>
