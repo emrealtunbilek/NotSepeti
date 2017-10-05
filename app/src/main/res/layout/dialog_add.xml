@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_baslik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bir Not Ekle"
+        android:layout_marginTop="@dimen/baslik_vertical_margin"
+        android:layout_marginBottom="@dimen/baslik_vertical_margin"
+        android:textSize="18dp"
+        />
+    <ImageButton
+        android:id="@+id/btn_kapat"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+
+
+</RelativeLayout>

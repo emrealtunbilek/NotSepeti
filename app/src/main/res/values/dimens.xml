@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="btn_notekle_corner_radius">4dp</dimen>
+    <dimen name="baslik_vertical_margin">36dp</dimen>
 </resources>
