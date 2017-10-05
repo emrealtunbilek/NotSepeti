@@ -26,6 +26,7 @@
         android:paddingRight="60dp"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
+        android:textColor="@color/btn_renk_ekle"
         android:text="@string/not_ekle"
         />
 
