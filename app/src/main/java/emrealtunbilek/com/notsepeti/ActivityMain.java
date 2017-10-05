@@ -1,5 +1,6 @@
 package emrealtunbilek.com.notsepeti;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import emrealtunbilek.com.notsepeti.data.DatabaseHelper;
 
 public class ActivityMain extends AppCompatActivity {
 
@@ -22,6 +25,10 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mBtnEkle = (Button) findViewById(R.id.btn_not_ekle);
+
+        DatabaseHelper helper=new DatabaseHelper(this);
+        SQLiteDatabase db=helper.getWritableDatabase();
+
 
         mBtnEkle.setOnClickListener(new View.OnClickListener() {
             @Override
