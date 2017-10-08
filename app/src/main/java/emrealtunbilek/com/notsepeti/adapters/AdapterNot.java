@@ -26,10 +26,16 @@ public class AdapterNot extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int ITEM = 0;
     public static final int FOOTER=1;
+    private AddListener mAddListener;
 
 
     private LayoutInflater mInflater;
     private ArrayList<Notlar> tumNotlar = new ArrayList<>();
+
+    public void setAddListener(AddListener listener){
+        mAddListener=listener;
+    }
+
 
     public AdapterNot(Context context, ArrayList<Notlar> notlar) {
         mInflater = LayoutInflater.from(context);
@@ -98,13 +104,20 @@ public class AdapterNot extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    public static class FooterHolder extends RecyclerView.ViewHolder {
+
+    public  class FooterHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         Button mButtonAdd;
 
         public FooterHolder(View itemView) {
             super(itemView);
            mButtonAdd= (Button) itemView.findViewById(R.id.btn_footer);
+            mButtonAdd.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            mAddListener.add();
         }
     }
 

@@ -19,10 +19,12 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 import emrealtunbilek.com.notsepeti.adapters.AdapterNot;
+import emrealtunbilek.com.notsepeti.adapters.AddListener;
+import emrealtunbilek.com.notsepeti.adapters.Divider;
 import emrealtunbilek.com.notsepeti.data.DatabaseHelper;
 import emrealtunbilek.com.notsepeti.data.Notlar;
 
-public class ActivityMain extends AppCompatActivity {
+public class ActivityMain extends AppCompatActivity implements AddListener{
 
     Toolbar mToolbar;
     Button mBtnEkle;
@@ -41,6 +43,7 @@ public class ActivityMain extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mBtnEkle = (Button) findViewById(R.id.btn_not_ekle);
         mRecyclerView= (NotlarRecyclerView) findViewById(R.id.rv_notlar);
+        mRecyclerView.addItemDecoration(new Divider(this, LinearLayoutManager.VERTICAL));
 
     //DatabaseHelper.getInstance(this).tumNotlariSil();
 
@@ -71,7 +74,9 @@ public class ActivityMain extends AppCompatActivity {
 
     public void guncelleData(){
         tumNotlar=DatabaseHelper.getInstance(this).tumNotlar();
+
         adapterNot=new AdapterNot(this, tumNotlar);
+        adapterNot.setAddListener(this);
         mRecyclerView.setAdapter(adapterNot);
 
     }
@@ -89,4 +94,8 @@ public class ActivityMain extends AppCompatActivity {
     }
 
 
+    @Override
+    public void add() {
+        showDialogEkle();
+    }
 }
