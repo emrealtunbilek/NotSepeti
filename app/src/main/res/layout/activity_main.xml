@@ -16,15 +16,15 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar" />
 
-    <android.support.v7.widget.RecyclerView
+    <emrealtunbilek.com.notsepeti.NotlarRecyclerView
 
         android:id="@+id/rv_notlar"
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+    </emrealtunbilek.com.notsepeti.NotlarRecyclerView>
 
-    <include layout="@layout/bos_liste"></include>
+    <include android:id="@+id/bosListe" layout="@layout/bos_liste"></include>
 
 </RelativeLayout>

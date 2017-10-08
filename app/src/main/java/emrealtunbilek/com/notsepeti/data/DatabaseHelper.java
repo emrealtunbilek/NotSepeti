@@ -84,6 +84,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void tumNotlariSil(){
+        db.delete(NotlarEntry.TABLE_NAME,null,null);
+    }
+
     public ArrayList<Notlar> tumNotlar() {
 
 
