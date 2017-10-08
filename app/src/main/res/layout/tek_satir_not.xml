@@ -13,6 +13,7 @@
         android:tint="@color/colorAccent"
         />
     <TextView
+        android:id="@+id/tv_NotIcerik"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -22,6 +23,7 @@
         />
 
     <TextView
+        android:id="@+id/tv_NotZaman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Not Zamanı"
