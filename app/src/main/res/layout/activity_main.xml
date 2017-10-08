@@ -17,6 +17,7 @@
         android:layout_below="@+id/toolbar" />
 
     <android.support.v7.widget.RecyclerView
+
         android:id="@+id/rv_notlar"
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"

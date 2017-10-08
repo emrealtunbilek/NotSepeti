@@ -6,6 +6,16 @@ package emrealtunbilek.com.notsepeti.data;
 
 public class Notlar {
 
+    private int notID;
+
+    public int getNotID() {
+        return notID;
+    }
+
+    public void setNotID(int notID) {
+        this.notID = notID;
+    }
+
     private String notIcerik;
     private String notTarih;
     private int yapildi;

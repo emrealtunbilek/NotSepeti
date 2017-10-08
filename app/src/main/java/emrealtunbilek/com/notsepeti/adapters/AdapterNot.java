@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import emrealtunbilek.com.notsepeti.R;
+import emrealtunbilek.com.notsepeti.data.Notlar;
 
 /**
  * Created by Emre Altunbilek on 8.10.2017.
@@ -23,21 +24,14 @@ import emrealtunbilek.com.notsepeti.R;
 public class AdapterNot extends RecyclerView.Adapter<AdapterNot.NotHolder> {
 
     private LayoutInflater mInflater;
-    private ArrayList<String> dummyArray = new ArrayList<>();
+    private ArrayList<Notlar> tumNotlar = new ArrayList<>();
 
-    public AdapterNot(Context context) {
+    public AdapterNot(Context context, ArrayList<Notlar> notlar) {
         mInflater = LayoutInflater.from(context);
-        dummyArray = degerUret();
+        tumNotlar = notlar;
     }
 
-    public static ArrayList<String> degerUret() {
-        ArrayList<String> dummyValues = new ArrayList<>();
-        for (int i = 1; i < 101; i++) {
-            dummyValues.add("Item : " + i);
-        }
 
-        return dummyValues;
-    }
 
     @Override
     public NotHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -50,15 +44,15 @@ public class AdapterNot extends RecyclerView.Adapter<AdapterNot.NotHolder> {
 
     @Override
     public void onBindViewHolder(NotHolder holder, int position) {
-        holder.mTextNotIcerik.setText(dummyArray.get(position));
-        holder.mTextNotZaman.setText(""+(position+1));
+        holder.mTextNotIcerik.setText(tumNotlar.get(position).getNotIcerik());
+        holder.mTextNotZaman.setText(""+tumNotlar.get(position).getNotID());
 
 
     }
 
     @Override
     public int getItemCount() {
-        return dummyArray.size();
+        return tumNotlar.size();
     }
 
     public static class NotHolder extends RecyclerView.ViewHolder {

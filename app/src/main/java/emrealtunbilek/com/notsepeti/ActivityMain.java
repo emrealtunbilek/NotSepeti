@@ -15,15 +15,19 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.util.ArrayList;
+
 import emrealtunbilek.com.notsepeti.adapters.AdapterNot;
 import emrealtunbilek.com.notsepeti.data.DatabaseHelper;
+import emrealtunbilek.com.notsepeti.data.Notlar;
 
 public class ActivityMain extends AppCompatActivity {
 
     Toolbar mToolbar;
     Button mBtnEkle;
-    SQLiteDatabase db;
+
     RecyclerView mRecyclerView;
+    ArrayList<Notlar> tumNotlar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,11 @@ public class ActivityMain extends AppCompatActivity {
 
         LinearLayoutManager manager=new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(new AdapterNot(this));
+        /*<!--app:layoutManager="android.support.v7.widget.LinearLayoutManager"-->*/
 
-        db=DatabaseHelper.getInstance(this).getWritableDatabase();
+        tumNotlar=DatabaseHelper.getInstance(this).tumNotlar();
+
+        mRecyclerView.setAdapter(new AdapterNot(this, tumNotlar));
 
         mBtnEkle.setOnClickListener(new View.OnClickListener() {
             @Override
