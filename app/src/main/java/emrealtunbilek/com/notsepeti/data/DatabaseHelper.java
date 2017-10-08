@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import emrealtunbilek.com.notsepeti.adapters.AdapterNot;
 import emrealtunbilek.com.notsepeti.data.NotSepetiContract.*;
 
 /**
@@ -16,6 +17,8 @@ import emrealtunbilek.com.notsepeti.data.NotSepetiContract.*;
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+
+    private AdapterNot recyclerAdapter;
 
     private static DatabaseHelper sInstance;
     private static SQLiteDatabase db;
@@ -61,6 +64,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         yeniNot.put("tamamlandi", yeni.getYapildi());
 
         db.insert(NotSepetiContract.NotlarEntry.TABLE_NAME, null, yeniNot);
+
+
     }
 
     public String tumNotlarYazdir() {
@@ -80,6 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<Notlar> tumNotlar() {
+
 
         ArrayList<Notlar> notlar = new ArrayList<>();
 

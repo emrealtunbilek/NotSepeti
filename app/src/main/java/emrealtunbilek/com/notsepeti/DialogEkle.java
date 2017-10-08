@@ -63,8 +63,9 @@ public class DialogEkle extends DialogFragment {
                 yeni.setNotTarih("10/10/2017");
                 yeni.setYapildi(1);
                 DatabaseHelper.getInstance(getActivity()).yeniNotEkle(yeni);
-                String c=DatabaseHelper.getInstance(getActivity()).tumNotlarYazdir();
-                Toast.makeText(getContext()," " +c, Toast.LENGTH_LONG).show();
+             /*   String c=DatabaseHelper.getInstance(getActivity()).tumNotlarYazdir();
+                Toast.makeText(getContext()," " +c, Toast.LENGTH_LONG).show();*/
+                ((ActivityMain) getActivity()).guncelleData();
             }
         });
 

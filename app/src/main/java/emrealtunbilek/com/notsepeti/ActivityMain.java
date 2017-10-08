@@ -27,7 +27,9 @@ public class ActivityMain extends AppCompatActivity {
     Button mBtnEkle;
 
     RecyclerView mRecyclerView;
+    AdapterNot adapterNot;
     ArrayList<Notlar> tumNotlar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,7 @@ public class ActivityMain extends AppCompatActivity {
         mRecyclerView.setLayoutManager(manager);
         /*<!--app:layoutManager="android.support.v7.widget.LinearLayoutManager"-->*/
 
-        tumNotlar=DatabaseHelper.getInstance(this).tumNotlar();
-
-        mRecyclerView.setAdapter(new AdapterNot(this, tumNotlar));
+        guncelleData();
 
         mBtnEkle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +58,13 @@ public class ActivityMain extends AppCompatActivity {
     private void showDialogEkle() {
         DialogEkle dialog=new DialogEkle();
         dialog.show(getSupportFragmentManager(),"DialogEkle");
+    }
+
+    public void guncelleData(){
+        tumNotlar=DatabaseHelper.getInstance(this).tumNotlar();
+        adapterNot=new AdapterNot(this, tumNotlar);
+        mRecyclerView.setAdapter(adapterNot);
+
     }
 
     private void backgroundImageAyarla() {

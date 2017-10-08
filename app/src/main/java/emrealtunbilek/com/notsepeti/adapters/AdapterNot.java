@@ -28,8 +28,14 @@ public class AdapterNot extends RecyclerView.Adapter<AdapterNot.NotHolder> {
 
     public AdapterNot(Context context, ArrayList<Notlar> notlar) {
         mInflater = LayoutInflater.from(context);
-        tumNotlar = notlar;
+        guncelle(notlar);
     }
+
+    public void guncelle(ArrayList<Notlar> notlar){
+        tumNotlar=notlar;
+        notifyDataSetChanged();
+    }
+
 
 
 
