@@ -1,6 +1,7 @@
 package emrealtunbilek.com.notsepeti;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,7 @@ public class ActivityMain extends AppCompatActivity {
 
     Toolbar mToolbar;
     Button mBtnEkle;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,7 @@ public class ActivityMain extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mBtnEkle = (Button) findViewById(R.id.btn_not_ekle);
 
-        DatabaseHelper helper=new DatabaseHelper(this);
-        SQLiteDatabase db=helper.getWritableDatabase();
-
+        db=DatabaseHelper.getInstance(this).getWritableDatabase();
 
         mBtnEkle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,4 +56,6 @@ public class ActivityMain extends AppCompatActivity {
 
 
     }
+
+
 }

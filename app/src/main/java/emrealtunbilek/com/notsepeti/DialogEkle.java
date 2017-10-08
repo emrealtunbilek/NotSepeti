@@ -1,5 +1,7 @@
 package emrealtunbilek.com.notsepeti;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -12,6 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import emrealtunbilek.com.notsepeti.data.DatabaseHelper;
+import emrealtunbilek.com.notsepeti.data.NotSepetiContract;
+import emrealtunbilek.com.notsepeti.data.Notlar;
+
 
 public class DialogEkle extends DialogFragment {
 
@@ -20,8 +26,12 @@ public class DialogEkle extends DialogFragment {
     private DatePicker mInputWhen;
     private Button mBtnEkle;
 
-    public DialogEkle() {
+
+    public DialogEkle(){
+
     }
+
+
 
     @Nullable
     @Override
@@ -48,7 +58,13 @@ public class DialogEkle extends DialogFragment {
         mBtnEkle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Notlar yeni=new Notlar();
+                yeni.setNotIcerik(mInputWhat.getText().toString());
+                yeni.setNotTarih("10/10/2017");
+                yeni.setYapildi(1);
+                DatabaseHelper.getInstance(getActivity()).yeniNotEkle(yeni);
+                String c=DatabaseHelper.getInstance(getActivity()).tumNotlarYazdir();
+                Toast.makeText(getContext()," " +c, Toast.LENGTH_LONG).show();
             }
         });
 
