@@ -4,6 +4,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +22,7 @@ public class ActivityMain extends AppCompatActivity {
     Toolbar mToolbar;
     Button mBtnEkle;
     SQLiteDatabase db;
+    RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,8 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mBtnEkle = (Button) findViewById(R.id.btn_not_ekle);
+        mRecyclerView= (RecyclerView) findViewById(R.id.rv_notlar);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         db=DatabaseHelper.getInstance(this).getWritableDatabase();
 
