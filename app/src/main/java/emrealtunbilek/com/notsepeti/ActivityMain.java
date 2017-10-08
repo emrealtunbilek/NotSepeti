@@ -42,7 +42,7 @@ public class ActivityMain extends AppCompatActivity {
         mBtnEkle = (Button) findViewById(R.id.btn_not_ekle);
         mRecyclerView= (NotlarRecyclerView) findViewById(R.id.rv_notlar);
 
-    DatabaseHelper.getInstance(this).tumNotlariSil();
+    //DatabaseHelper.getInstance(this).tumNotlariSil();
 
         LinearLayoutManager manager=new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(manager);

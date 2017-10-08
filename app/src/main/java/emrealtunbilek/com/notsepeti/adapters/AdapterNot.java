@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,7 +22,11 @@ import emrealtunbilek.com.notsepeti.data.Notlar;
 //4 methodları implemente et
 //AdapterNot sınıfına default contructor olustur, contexte erişmek için
 
-public class AdapterNot extends RecyclerView.Adapter<AdapterNot.NotHolder> {
+public class AdapterNot extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    public static final int ITEM = 0;
+    public static final int FOOTER=1;
+
 
     private LayoutInflater mInflater;
     private ArrayList<Notlar> tumNotlar = new ArrayList<>();
@@ -37,28 +42,48 @@ public class AdapterNot extends RecyclerView.Adapter<AdapterNot.NotHolder> {
     }
 
 
-
-
     @Override
-    public NotHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = mInflater.inflate(R.layout.tek_satir_not, parent, false);
-        NotHolder holder = new NotHolder(view);
-
-        return holder;
+    public int getItemViewType(int position) {
+        if(tumNotlar.size()==0){
+            return ITEM;
+        }else if(position < tumNotlar.size()) {
+            return ITEM;
+        }else {
+            return FOOTER;
+        }
     }
 
     @Override
-    public void onBindViewHolder(NotHolder holder, int position) {
-        holder.mTextNotIcerik.setText(tumNotlar.get(position).getNotIcerik());
-        holder.mTextNotZaman.setText(""+tumNotlar.get(position).getNotID());
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        if(viewType == FOOTER){
+            View view = mInflater.inflate(R.layout.footer, parent, false);
+            return new FooterHolder(view);
+        }
+        else{
+
+            View view = mInflater.inflate(R.layout.tek_satir_not, parent, false);
+            return new NotHolder(view);
+        }
+
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        if(holder instanceof NotHolder){
+            NotHolder notHolder= (NotHolder) holder;
+            notHolder.mTextNotIcerik.setText(tumNotlar.get(position).getNotIcerik());
+            notHolder.mTextNotZaman.setText(""+tumNotlar.get(position).getNotID());
+        }
+
 
 
     }
 
     @Override
     public int getItemCount() {
-        return tumNotlar.size();
+        return tumNotlar.size()+1;
     }
 
     public static class NotHolder extends RecyclerView.ViewHolder {
@@ -70,6 +95,16 @@ public class AdapterNot extends RecyclerView.Adapter<AdapterNot.NotHolder> {
             super(itemView);
             mTextNotIcerik = (TextView) itemView.findViewById(R.id.tv_NotIcerik);
             mTextNotZaman = (TextView) itemView.findViewById(R.id.tv_NotZaman);
+        }
+    }
+
+    public static class FooterHolder extends RecyclerView.ViewHolder {
+
+        Button mButtonAdd;
+
+        public FooterHolder(View itemView) {
+            super(itemView);
+           mButtonAdd= (Button) itemView.findViewById(R.id.btn_footer);
         }
     }
 
